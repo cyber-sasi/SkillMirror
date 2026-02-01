@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SkillMirror Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="result-container">
+
+    <div class="header">
+        <h1>SkillMirror Analysis</h1>
+        <p>GitHub User: <strong>{{ username }}</strong></p>
+    </div>
+
+    <div class="dashboard">
+
+        <!-- LEFT -->
+        <div class="card">
+            <h2>Skills Detected</h2>
+            <ul class="skills-list">
+                {% for skill in skills %}
+                <li>
+                    <span class="skill-name">{{ skill.language }}</span>
+                    <span class="skill-count">{{ skill.count }} repos</span>
+                    <span class="skill-level">{{ skill.level }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <div class="summary">
+                <p><strong>Top Skill:</strong> {{ top_skill }}</p>
+                <p><strong>Consistency:</strong> {{ consistency }}</p>
+                <p><strong>Profile Type:</strong> {{ profile_type }}</p>
+            </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="card chart-card">
+            <button id="toggleChartBtn">Switch Chart Type</button>
+            <canvas id="skillChart" data-skills='{{ skills | tojson }}'></canvas>
+
+        </div>
+
+    </div>
+    
+</div>
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/static/chart.js"></script>
+
+</body>
+
+</html>

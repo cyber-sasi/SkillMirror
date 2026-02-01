@@ -1,0 +1,72 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>SkillMirror AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="result-container">
+
+    <h1>SkillMirror Analysis</h1>
+    <h3>GitHub User: {{ username }}</h3>
+
+    <div class="content-grid">
+
+        <!-- LEFT SIDE -->
+        <!-- <div class="left-panel">
+            <h2>Skills Detected</h2>
+            <ul>
+                {% for skill in skills %}
+                <li>
+                    <strong>{{ skill.language }}</strong> —
+                    {{ skill.count }} repos<br>
+                    <span class="level">{{ skill.level }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <div class="summary">
+                <p><strong>Top Skill:</strong> {{ top_skill }}</p>
+                <p><strong>Consistency:</strong> {{ consistency }}</p>
+                <p><strong>Profile Type:</strong> {{ profile_type }}</p>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <!-- <div class="right-panel">
+            <button id="toggleChartBtn">Switch Chart Type</button>
+            
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html> --> 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SkillMirror AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>SkillMirror AI</h1>
+    <p>Analyze GitHub activity to discover real skills</p>
+
+    <form method="POST">
+        <input type="text" name="username" placeholder="Enter GitHub username" required>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
