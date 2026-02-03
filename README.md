@@ -4,6 +4,8 @@
   Instead of assuming skills from resumes, SkillMirror shows proof-based skills derived from GitHub activity.
 
 
+
+
 🎯 Why I Built This Project
 
   Many people mention skills in their resumes without real evidence.
@@ -16,6 +18,8 @@
      
   3. Help recruiters and learners understand actual skill usage.
 
+
+
 🧠 How It Works
 
    1. User enters a GitHub username
@@ -27,6 +31,8 @@
    4.Skills are categorized and counted
    
    5.Results are displayed using interactive charts
+
+
 
 
 🚀 Features
@@ -42,6 +48,8 @@
   🌐 Live deployed application
 
 
+
+
 🛠 Tech Stack
 
    Frontend: HTML, CSS, JavaScript, Chart.js
@@ -53,6 +61,8 @@
    Deployment: Render
    
    Version Control: Git & GitHub
+
+
 
 
 🌍 Live Demo
