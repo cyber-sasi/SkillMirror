@@ -5,7 +5,6 @@
 
 
 
-
 🎯 Why I Built This Project
 
   Many people mention skills in their resumes without real evidence.
@@ -22,16 +21,15 @@
 
 🧠 How It Works
 
-   1. User enters a GitHub username
+    1. User enters a GitHub username
       
-   2.App fetches public repositories using GitHub API
+    2.App fetches public repositories using GitHub API
    
-   3.Programming languages are analyzed from repos
+    3.Programming languages are analyzed from repos
    
-   4.Skills are categorized and counted
+    4.Skills are categorized and counted
    
-   5.Results are displayed using interactive charts
-
+    5.Results are displayed using interactive charts
 
 
 
@@ -49,7 +47,6 @@
 
 
 
-
 🛠 Tech Stack
 
    Frontend: HTML, CSS, JavaScript, Chart.js
@@ -61,7 +58,6 @@
    Deployment: Render
    
    Version Control: Git & GitHub
-
 
 
 
