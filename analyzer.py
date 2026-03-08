@@ -1,7 +1,11 @@
 import requests
 import os
+from cachetools import TTLCache
+cache = TTLCache(maxsize=100, ttl=3600)
 
 def analyze_github(username):
+    if username in cache:
+        return cache[username]
     username = username.strip()
 
     url = f"https://api.github.com/users/{username}/repos"
@@ -88,4 +92,7 @@ def analyze_github(username):
         "total_repos": total_repos
     }
 
-    return skills, summary
+    result = (skills, summary)
+    cache[username] = result
+    return result
+
