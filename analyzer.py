@@ -1,4 +1,3 @@
-
 import requests
 import os
 
@@ -7,33 +6,40 @@ def analyze_github(username):
 
     url = f"https://api.github.com/users/{username}/repos"
 
-    # Use GitHub token if available (important for Render)
+    # Get GitHub token if available (useful for Render deployment)
     token = os.getenv("GITHUB_TOKEN")
 
-    headers = {}
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "SkillMirror-App"
+    }
+
     if token:
-        headers["Authorization"] = f"token {token}"
+        headers["Authorization"] = f"Bearer {token}"
 
-    response = requests.get(url, headers=headers)
+    try:
+        response = requests.get(url, headers=headers)
+        print("GitHub API Status:", response.status_code)
 
-    print("GitHub API Status:", response.status_code)
-    print("GitHub API Response:", response.text)
+        if response.status_code == 404:
+            print("GitHub user not found")
+            return None
 
-    # Only return None if user truly doesn't exist
-    if response.status_code == 404:
+        if response.status_code != 200:
+            print("GitHub API error occurred:", response.text)
+            return None
+
+        repos = response.json()
+
+    except Exception as e:
+        print("Request failed:", str(e))
         return None
-
-    if response.status_code != 200:
-        print("GitHub API error occurred")
-        return None
-
-    repos = response.json()
 
     languages = {}
     total_repos = len(repos)
 
     for repo in repos:
-        lang = repo["language"]
+        lang = repo.get("language")
         if lang:
             languages[lang] = languages.get(lang, 0) + 1
 
@@ -83,5 +89,3 @@ def analyze_github(username):
     }
 
     return skills, summary
-
-
