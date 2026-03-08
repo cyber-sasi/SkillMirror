@@ -9,7 +9,10 @@ def analyze_github(username):
     # Use GitHub token if available (important for Render)
     token = os.getenv("GITHUB_TOKEN")
 
-    headers = {}
+    headers = {
+        "User-Agent": "SkillMirror-App"
+    }
+
     if token:
         headers["Authorization"] = f"token {token}"
 
@@ -82,5 +85,3 @@ def analyze_github(username):
     }
 
     return skills, summary
-
-
