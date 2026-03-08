@@ -7,24 +7,20 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        username = request.form.get("username", "").strip()
+        username = request.form["username"]
         result = analyze_github(username)
 
-    if result is None:
-     return render_template(
-        "index.html",
-        error="GitHub user not found or GitHub API temporarily unavailable"
-    )
+        if result is None:
+            return render_template("index.html", error="GitHub user not found")
 
-
-    skills, summary = result
+        skills, summary = result
 
         # Temporary logic
-    top_skill = skills[0]["language"] if skills else "N/A"
-    consistency = "Medium"
-    profile_type = "Skill Explorer"
+        top_skill = skills[0]["language"] if skills else "N/A"
+        consistency = "Medium"
+        profile_type = "Skill Explorer"
 
-    return render_template(
+        return render_template(
             "result.html",
             username=username,
             skills=skills,
